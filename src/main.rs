@@ -1,12 +1,17 @@
 use std::env;
+use std::fs;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
     // dbg!(args);
 
     let query: &String = &args[1];
-    let filepath: &String = &args[2];
+    let file_path: &String = &args[2];
 
     println!("query is ===> {}", query);
-    println!("filepath is ===> {}", filepath);
+    println!("In file ===> {}", file_path);
+
+    let contents = fs::read_to_string(file_path).expect("Should be able to read the file");
+
+    println!("with text: \n {}", contents)
 }
